@@ -1,4 +1,5 @@
 import Header from "./Header"
+import charizardImg from '../assets/images/charizard.webp'
 
 const HeroSection = () => {
   return(
@@ -22,6 +23,11 @@ const HeroSection = () => {
               More details
             </button>
           </div>
+          
+          <div className="hero-image">
+            <img src={charizardImg} alt="Charizard Image" />
+          </div>
+
         </div>
       </div>
     </div>
