@@ -21,9 +21,6 @@ const HeroSection = () => {
                         <div className="hero-data-types">
                             <PokemonType type="fire"/>
                             <PokemonType type="flying"/>
-                            <PokemonType type="grass"/>
-                            <PokemonType type="poison"/>
-                            <PokemonType type="water"/>
                         </div>
                         <h1 className="hero-data-name">Charizard</h1>
                         <p className="hero-data-description">
@@ -36,7 +33,7 @@ const HeroSection = () => {
                         <button className="hero-data-button" onClick={navigateToPokemonDetails}>
                             More details
                         </button>
-                        <Link to="/pokemon/1">Page Pokemon Details</Link>
+                        
                     </div>
                     <div className="hero-image">
                         <img src={charizardImg} alt="Charizard Image" />
