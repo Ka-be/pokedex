@@ -1,4 +1,10 @@
+@use 'functions';
 @import "mixins";
+
+
+// Autres types a rajouter
+$types : fire, grass, poison, water, flying;
+
 
 button {
   display: flex;
@@ -20,76 +26,11 @@ button {
     height: 1rem;
   }
 
-  &.type--bug {
-    @include pokemon-type('bug');
-  }
-
-  &.type--dark {
-    @include pokemon-type('dark');
-  }
-
-  &.type--dragon {
-    @include pokemon-type('dragon');
-  }
-
-  &.type--electric {
-    @include pokemon-type('electric');
-  }
-
-  &.type--fairy {
-    @include pokemon-type('fairy');
-  }
-
-  &.type--fighting {
-    @include pokemon-type('fighting');
-  }
-
-  &.type--fire {
-    @include pokemon-type('fire');
-  }
-
-  &.type--flying {
-    @include pokemon-type('flying');
-  }
-
-  &.type--ghost {
-    @include pokemon-type('ghost');
-  }
-
-  &.type--grass {
-    @include pokemon-type('grass');
-  }
-
-  &.type--ground {
-    @include pokemon-type('ground');
-  }
-
-  &.type--ice {
-    @include pokemon-type('ice');
-  }
-
-  &.type--normal {
-    @include pokemon-type('normal');
-  }
-
-  &.type--poison {
-    @include pokemon-type('poison');
-  }
-
-  &.type--psychic {
-    @include pokemon-type('psychic');
-  }
-
-  &.type--rock {
-    @include pokemon-type('rock');
-  }
-
-  &.type--steel {
-    @include pokemon-type('steel');
-  }
-
-  &.type--water {
-    @include pokemon-type('water');
+  // Boucle pour attribuer chaque couleur a chaque class type avec la fonction typeColor()
+  @each $type in $types {
+    &.type--#{$type} {
+      background: functions.typeColor($type);
+    }
   }
 }
 

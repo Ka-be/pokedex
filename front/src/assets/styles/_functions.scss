@@ -1,0 +1,18 @@
+@use 'variables';
+
+//Foncion opur les types badges
+
+@function typeColor($type){
+  @if ($type == fire) {
+    @return variables.$fireColor;
+  } @else if ($type == grass){
+    @return variables.$grassColor;
+  } @else if ($type == poison){
+    @return variables.$poisonColor;
+  } @else if ($type == water){
+    @return variables.$waterColor;
+  } @else if ($type == flying){
+    @return variables.$flyingColor;
+  } 
+  @return black;
+}
