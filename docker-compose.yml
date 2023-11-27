@@ -1,7 +1,11 @@
-version: '3'
+version: "3"
 services:
-  app:
-    image: node:20
+  frontend:
+    # Avec un image node depuis le docker hub
+    # image: node:20
+    # Depuis le Dockerfile dans le dossier front
+    build:
+      context: ./front
     container_name: front
     ports:
       - 5173:5173
