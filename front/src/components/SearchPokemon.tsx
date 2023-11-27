@@ -1,6 +1,7 @@
 import { SyntheticEvent, useState } from "react";
 import { SearchPokemonProps } from "../@types/Pokemon";
 import { pokemonsArray } from "../data";
+import "../assets/styles/_searchPokemon.scss"
 
 
 
