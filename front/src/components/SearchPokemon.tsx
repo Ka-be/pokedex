@@ -1,15 +1,25 @@
 import { SyntheticEvent, useState } from "react";
+import { SearchPokemonProps } from "../@types/Pokemon";
+import { pokemonsArray } from "../data";
 
-const SearchPokemon = () => {
+
+
+const SearchPokemon = ({pokemonList, setPokemonList}: SearchPokemonProps) => {
     const [inputValue, setInputValue] = useState("");
 
     const handleSubmit = (event: SyntheticEvent) => {
         event.preventDefault();
-        console.log(inputValue);
+        
+        pokemonsArray.map((pokemon) => {
+            if(pokemon.name === inputValue){
+                setPokemonList([pokemon]);
+            }
+        })
     }
 
     const handleReset = () => {
         setInputValue("");
+        setPokemonList(pokemonsArray);
     }
 
     return (

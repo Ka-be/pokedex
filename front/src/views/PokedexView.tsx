@@ -7,12 +7,12 @@ import { pokemonsArray } from "../data";
 import SearchPokemon from "../components/SearchPokemon";
 
 const PokedexView = () => {
-	const [pokemonList] = useState<Pokemon[]>(pokemonsArray);
+	const [pokemonList, setPokemonList] = useState<Pokemon[]>(pokemonsArray);
 
 	return (
 		<>
 			<HeroSection />
-			<SearchPokemon	/>
+			<SearchPokemon pokemonList={pokemonList} setPokemonList={setPokemonList}/>
 			<Pokedex pokemonList={pokemonList} />
 			<Footer />
 		</>

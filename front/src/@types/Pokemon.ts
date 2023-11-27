@@ -14,3 +14,8 @@ interface Type {
         url: string
     }
 }
+
+export type SearchPokemonProps = {
+    pokemonList: Pokemon[];
+    setPokemonList: (data: Pokemon[]) => void;
+}
