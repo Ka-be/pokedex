@@ -16,6 +16,5 @@ interface Type {
 }
 
 export type SearchPokemonProps = {
-    pokemonList: Pokemon[];
     setPokemonList: (data: Pokemon[]) => void;
 }

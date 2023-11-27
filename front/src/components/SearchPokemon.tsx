@@ -1,26 +1,24 @@
 import { SyntheticEvent, useState } from "react";
 import { SearchPokemonProps } from "../@types/Pokemon";
 import { pokemonsArray } from "../data";
-import "../assets/styles/_searchPokemon.scss"
+import "../assets/styles/_searchPokemon.scss";
 
-
-
-const SearchPokemon = ({pokemonList, setPokemonList}: SearchPokemonProps) => {
+const SearchPokemon = ({setPokemonList}: SearchPokemonProps) => {
     const [inputValue, setInputValue] = useState("");
 
     const handleSubmit = (event: SyntheticEvent) => {
         event.preventDefault();
-        
+
         pokemonsArray.map((pokemon) => {
-            if(pokemon.name === inputValue){
+            if (pokemon.name === inputValue) {
                 setPokemonList([pokemon]);
             }
         })
     }
 
     const handleReset = () => {
-        setInputValue("");
         setPokemonList(pokemonsArray);
+        setInputValue("");
     }
 
     return (
@@ -28,14 +26,12 @@ const SearchPokemon = ({pokemonList, setPokemonList}: SearchPokemonProps) => {
             <div className="main-container">
                 <form onSubmit={handleSubmit}>
                     <input 
-                    type="text" 
-                    placeholder="Search Pokemon" 
-                    value={inputValue} 
-                    onChange={(e) => {
-                        setInputValue(e.target.value)
-                    }}/>
+                        type="text" 
+                        placeholder="Search Pokemon" 
+                        value={inputValue}
+                        onChange={(e) => setInputValue(e.target.value)} />
                     <button type="submit">Search</button>
-                    <button type="reset" onClick={handleReset}>Reset</button>
+                    <button type="button" onClick={handleReset}>Reset</button>
                 </form>
             </div>
         </>
