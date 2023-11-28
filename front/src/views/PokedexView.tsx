@@ -1,34 +1,46 @@
-import { useState, useEffect } from "react";
-import Footer from "../components/Footer";
-import HeroSection from "../components/HeroSection";
-import Pokedex from "../components/Pokedex";
-import { Pokemon } from "../@types/Pokemon";
-import { pokemonsArray } from "../data";
-import SearchPokemon from "../components/SearchPokemon";
+import { useEffect, useState } from "react"
+import Footer from "../components/Footer"
+import HeroSection from "../components/HeroSection"
+import Pokedex from "../components/Pokedex"
+import { Pokemon } from "../@types/Pokemon"
+import SearchPokemon from "../components/SearchPokemon"
+import { fetchPokemonList } from "../api/fetchPokemonList"
 
 const PokedexView = () => {
-	const [pokemonList, setPokemonList] = useState<Pokemon[]>(pokemonsArray);
+    const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
+    const [pokemonCount, setPokemonCount] = useState(0);
+    const [page, setPage] = useState(1);
 
     useEffect(() => {
-        console.log("Effect Pokedex View"); // Au chargement du composant, a l'ouverture de la page
+        (async () => {
+            const { pokemonData, pokemonCount } = await fetchPokemonList(page);
+
+            setPokemonCount(pokemonCount);
+            setPokemonList(await pokemonData);
+        })();
 
         return () => {
-            console.log("Pokedex Unmount"); // Lorsque l'on démonte le composant, au changement de la page
+            console.log("Pokedex Unmount");
         }
     }, [])
 
     useEffect(() => {
-        console.log("Change pokemon list"); // Au changement du state de PokemonList
+        console.log("Change pokemon list");
     }, [pokemonList])
 
-	return (
-		<>
-			<HeroSection/>
-            <SearchPokemon setPokemonList={setPokemonList}/>
-            <Pokedex pokemonList={pokemonList}/>
-            <Footer/>
-		</>
-	);
-};
+    return (
+        <>
+            <HeroSection />
+            <SearchPokemon setPokemonList={setPokemonList} />
+            <Pokedex
+                pokemonList={pokemonList}
+                setPokemonList={setPokemonList}
+                pokemonCount={pokemonCount}
+                page={page}
+                setPage={setPage} />
+            <Footer />
+        </>
+    )
+}
 
-export default PokedexView;
+export default PokedexView
