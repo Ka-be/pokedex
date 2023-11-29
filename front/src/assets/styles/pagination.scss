@@ -4,14 +4,12 @@ nav.pagination {
       display: flex;
       gap: 20px;
       justify-content: center;
-      flex-wrap: wrap;
       cursor: pointer;
   
       li {
         border: 1px solid #2f5aff;
         border-radius: 5px;
-        width: 40px;
-        padding: 5px 0 5px 0;
+        padding: 10px;
         text-align: center;
   
         &.current, &.prev, &.next {
