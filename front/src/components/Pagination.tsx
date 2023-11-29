@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { PaginationProps } from "../@types/Pokemon";
 import { fetchPokemonList } from "../api/fetchPokemonList";
 import "../assets/styles/pagination.scss";
