@@ -1,0 +1,26 @@
+nav.pagination {
+
+    ul {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      cursor: pointer;
+  
+      li {
+        border: 1px solid #2f5aff;
+        border-radius: 5px;
+        width: 40px;
+        padding: 5px 0 5px 0;
+        text-align: center;
+  
+        &.current, &.prev, &.next {
+          background-color: #2f5aff;
+        }
+
+        &:hover{
+            background: #2f5aff;
+        }
+      }
+    }
+  }

@@ -1,27 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
 import { PaginationProps } from "../@types/Pokemon";
 import { fetchPokemonList } from "../api/fetchPokemonList";
+import "../assets/styles/pagination.scss";
+import { useTheme } from "../hooks/useTheme";
 
 const Pagination = ({pokemonCount, setPage, setPokemonList}: PaginationProps) => {
+    const theme = useContext(useTheme);
     const items = [];
     for (let i = 1; i <= Math.ceil(pokemonCount / 9); i++) {
         items.push(i);
     }
 
-    const handleClick = async (e: React.MouseEvent) => {
-        console.log('CLICK')
-        const page = Number(e.currentTarget.textContent);
-        const {pokemonData} = await fetchPokemonList(page);
-        setPage(page);
+    const handleClick = async (item: number) => {
+        const {pokemonData} = await fetchPokemonList(item);
+        setPage(item);
         setPokemonList(await pokemonData);
     }
 
     return (
         <>
+            <h2>Theme: {theme}</h2>
             <nav className="pagination">
                 <ul>
                     {items.map((item) => (
-                        <li onClick={handleClick}>
+                        <li onClick={() => handleClick(item)}>
                             {item}
                         </li>
                     ))}
