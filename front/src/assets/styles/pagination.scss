@@ -12,8 +12,12 @@ nav.pagination {
         padding: 10px;
         text-align: center;
   
-        &.current, &.prev, &.next {
-          background-color: #2f5aff;
+        &.prev, &.next {
+          background-color: #263053;
+        }
+
+        &.current{
+          background: #2f5aff;
         }
 
         &:hover{
